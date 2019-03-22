@@ -53,5 +53,5 @@ public class ProductCategoryVo implements Serializable{
     @ApiModelProperty(value = "描述")
     @TableField("description")
     private String description;
-    List<ProductCategoryVo> list=new ArrayList<>();
+    List<ProductCategoryVo> children;
 }

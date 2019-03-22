@@ -27,50 +27,6 @@ public class ProductCategoryServiceImpl extends ServiceImpl<ProductCategoryMappe
 
     @Override
     public List<ProductCategoryVo> select() {
-        QueryWrapper<ProductCategory> queryWrapper = new QueryWrapper<>();
-        queryWrapper.eq("parent_id", 0);
-        queryWrapper.orderByAsc("id");
-        List<ProductCategory> productCategories = baseMapper.selectList(queryWrapper);
-        List<ProductCategoryVo> list = new ArrayList<>();
-        for (int i = 0; i < productCategories.size(); i++) {
-            ProductCategory productCategory = productCategories.get(i);
-            ProductCategoryVo productCategoryVo = new ProductCategoryVo();
-            BeanUtils.copyProperties(productCategory, productCategoryVo);
-            list.add(productCategoryVo);
-        }
-        queryWrapper = new QueryWrapper<>();
-        queryWrapper.eq("level", 1);
-        queryWrapper.orderByAsc("parent_id");
-        List<ProductCategory> productCategories1 = baseMapper.selectList(queryWrapper);
-        int k = 0;
-        for (int i = 0; i < productCategories1.size(); i++) {
-
-            ProductCategory productCategory = productCategories1.get(i);
-            ProductCategoryVo productCategoryVo = new ProductCategoryVo();
-            BeanUtils.copyProperties(productCategory, productCategoryVo);
-            Long id = list.get(k).getId();
-            if (id == productCategory.getParentId()) {
-                list.get(k).getList().add(productCategoryVo);
-            } else {
-                k++;
-            }
-        }
-        queryWrapper = new QueryWrapper<>();
-        queryWrapper.eq("level", 2);
-        queryWrapper.orderByAsc("parent_id");
-        List<ProductCategory> productCategories2 = baseMapper.selectList(queryWrapper);
-        k = 0;
-        for (int i = 0; i < productCategories2.size(); i++) {
-            ProductCategory productCategory = productCategories2.get(i);
-            ProductCategoryVo productCategoryVo = new ProductCategoryVo();
-            BeanUtils.copyProperties(productCategory, productCategoryVo);
-            List<ProductCategoryVo> list2 = list.get(i).getList();
-            if (list2.get(k).getId() == productCategoryVo.getParentId()) {
-                list2.get(k).getList().add(productCategoryVo);
-            } else {
-                k++;
-            }
-        }
-        return list;
+        return baseMapper.selectLists(0);
     }
 }

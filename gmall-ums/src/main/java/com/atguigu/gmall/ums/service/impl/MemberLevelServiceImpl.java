@@ -4,8 +4,8 @@ import com.alibaba.dubbo.config.annotation.Service;
 import com.atguigu.gmall.ums.entity.MemberLevel;
 import com.atguigu.gmall.ums.mapper.MemberLevelMapper;
 import com.atguigu.gmall.ums.service.MemberLevelService;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 /**
@@ -21,8 +21,8 @@ import org.springframework.stereotype.Component;
 public class MemberLevelServiceImpl extends ServiceImpl<MemberLevelMapper, MemberLevel> implements MemberLevelService {
 
     @Override
-    public MemberLevel select(long id) {
-        MemberLevel memberLevel = baseMapper.selectById(id);
+    public MemberLevel select(long defaultStatus) {
+        MemberLevel memberLevel = baseMapper.selectOne(new QueryWrapper<MemberLevel>().eq("status",defaultStatus));
         return memberLevel;
     }
 }

@@ -33,12 +33,8 @@ public class MemberController {
     private MemberLevelService memberLevelService;
 
     @GetMapping("list&{defaultStatus}")
-    public String getLeve(@PathVariable Integer defaultStatus, HttpServletRequest request){
-        String header = request.getHeader(tokenHeader);
-        String token = StringUtils.substring(header, tokenHead.length());
-        String userName = jwtTokenUtil.getUserNameFromToken(token);
-        long id=memberService.select(userName);
-        MemberLevel memberLevel=memberLevelService.select(id);
+    public String getLeve(@PathVariable Integer defaultStatus){
+        MemberLevel memberLevel=memberLevelService.select(defaultStatus);
         return "redires:/admin";
     }
 
