@@ -26,6 +26,28 @@ public class GmallSwagger2Config {
                 .apiInfo(apiInfo())
                 .enable(true);
     }
+    @Bean("后台商品模块")
+    public Docket pmsApis() {
+        return new Docket(DocumentationType.SWAGGER_2)
+                .groupName("后台商品模块")
+                .select()
+                .apis(RequestHandlerSelectors.withClassAnnotation(Api.class))
+                .paths(PathSelectors.regex("/product.*"))
+                .build()
+                .apiInfo(apiInfo())
+                .enable(true);
+    }
+    @Bean("后台会员模块")
+    public Docket member() {
+        return new Docket(DocumentationType.SWAGGER_2)
+                .groupName("后台会员模块")
+                .select()
+                .apis(RequestHandlerSelectors.withClassAnnotation(Api.class))
+                .paths(PathSelectors.regex("/memberLevel.*"))
+                .build()
+                .apiInfo(apiInfo())
+                .enable(true);
+    }
 
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()

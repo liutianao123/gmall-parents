@@ -99,7 +99,6 @@ public class UmsAdminController {
 //
 //            return new CommonResult().validateFailed(result);
 //        }
-            int i = 10 /0;
 
 
         //统一的异常处理
@@ -136,6 +135,8 @@ public class UmsAdminController {
         Map<String, String> tokenMap = new HashMap<>();
         tokenMap.put("token", token);
         tokenMap.put("tokenHead", tokenHead);
+        System.out.println(token);
+        System.out.println(tokenHead);
         return new CommonResult().success(tokenMap);
     }
 

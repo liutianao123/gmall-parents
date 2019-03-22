@@ -15,27 +15,13 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 //@ControllerAdvice //这是一个统一异常处理类
 @RestControllerAdvice
 public class GmallGlobalExceptionHandler {
-
-
-
-    //数学运算？精确
     @ExceptionHandler(ArithmeticException.class)
-    public Object handleNullpointException(ArithmeticException e){
-        log.error("全局异常处理类感知到异常...");
-
+    public Object number(Exception e) {
+        log.error("数字异常");
         return new CommonResult().failed().validateFailed(e.getMessage());
     }
-
-    //这个放在最后比较好
     @ExceptionHandler(Exception.class)
-    public Object handle(Exception e){
-        log.error("全局异常处理类感知到异常...");
-
-        return new CommonResult().failed().validateFailed(e.getMessage());
+    public Object exception(Exception e){
+        return new CommonResult().failed().validateFailed("cw");
     }
-
-
-
-
-
 }
