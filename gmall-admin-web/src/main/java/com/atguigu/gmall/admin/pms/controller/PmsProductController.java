@@ -55,7 +55,6 @@ public class PmsProductController {
                           @RequestParam(value = "pageNum", defaultValue = "1") Integer pageNum) {
         //查询商品
         Map<String,Object> map=productService.pageselect(pageSize,pageNum);
-        System.out.println(map);
         return new CommonResult().success(map);
     }
 

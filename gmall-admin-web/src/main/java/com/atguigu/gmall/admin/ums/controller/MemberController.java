@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import com.alibaba.dubbo.config.annotation.Reference;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 //memberLevel/list?defaultStatus=0
 @CrossOrigin
@@ -21,21 +22,13 @@ import javax.servlet.http.HttpServletRequest;
 @Api("会员")
 @RequestMapping("memberLevel")
 public class MemberController {
-    @Value("${gmall.jwt.tokenHeader}")
-    private String tokenHeader;
-    @Value("${gmall.jwt.tokenHead}")
-    private String tokenHead;
-    @Autowired
-    JwtTokenUtil jwtTokenUtil;
-    @Reference
-    private MemberService memberService;
     @Reference
     private MemberLevelService memberLevelService;
-
-    @GetMapping("list&{defaultStatus}")
-    public String getLeve(@PathVariable Integer defaultStatus){
-        MemberLevel memberLevel=memberLevelService.select(defaultStatus);
-        return "redires:/admin";
+//memberLevel/list?defaultStatus=0
+    @GetMapping("list")
+    public List<MemberLevel> getLeve(@RequestParam(value = "defaultStatus") Integer defaultStatus){
+        List<MemberLevel> memberLevels = memberLevelService.select(defaultStatus);
+        return memberLevels;
     }
 
 }

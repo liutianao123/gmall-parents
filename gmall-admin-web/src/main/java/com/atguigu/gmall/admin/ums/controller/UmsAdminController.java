@@ -135,8 +135,6 @@ public class UmsAdminController {
         Map<String, String> tokenMap = new HashMap<>();
         tokenMap.put("token", token);
         tokenMap.put("tokenHead", tokenHead);
-        System.out.println(token);
-        System.out.println(tokenHead);
         return new CommonResult().success(tokenMap);
     }
 
@@ -172,7 +170,6 @@ public class UmsAdminController {
 
         String token = oldToken.substring(tokenHead.length());
         String userName = jwtTokenUtil.getUserNameFromToken(token);
-        System.out.println("需要去访问的用户名："+userName);
 
         //MyBatisPlus的service简单方法可以用，复杂的方法（参数是QueryWrapper、参数是IPage的都不要用）
        // Admin umsAdmin = adminService.getOne(new QueryWrapper<Admin>().eq("username",userName));

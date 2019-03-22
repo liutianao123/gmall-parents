@@ -8,6 +8,8 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 /**
  * <p>
  * 会员等级表 服务实现类
@@ -21,8 +23,8 @@ import org.springframework.stereotype.Component;
 public class MemberLevelServiceImpl extends ServiceImpl<MemberLevelMapper, MemberLevel> implements MemberLevelService {
 
     @Override
-    public MemberLevel select(long defaultStatus) {
-        MemberLevel memberLevel = baseMapper.selectOne(new QueryWrapper<MemberLevel>().eq("status",defaultStatus));
-        return memberLevel;
+    public List<MemberLevel> select(long defaultStatus) {
+        List<MemberLevel> memberLevels = baseMapper.selectList(new QueryWrapper<MemberLevel>().eq("default_status", defaultStatus));
+        return memberLevels;
     }
 }

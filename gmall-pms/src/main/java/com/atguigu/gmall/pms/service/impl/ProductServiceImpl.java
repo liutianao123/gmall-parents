@@ -26,13 +26,9 @@ public class ProductServiceImpl extends ServiceImpl<ProductMapper, Product> impl
 
     @Override
     public Map<String, Object> pageselect(Integer pageSize, Integer pageNum) {
-        System.out.println(pageNum+"          "+pageSize);
         Page<Product> page=new Page<>(pageNum,pageSize);
         IPage<Product> page1 = baseMapper.selectPage(page, null);
-        System.out.println(page1.getTotal());
-        System.out.println(page1.getPages());
         Map<String, Object> map = PageBaseConfig.pageBase(page1);
-        System.out.println(map);
         return map;
     }
 }
