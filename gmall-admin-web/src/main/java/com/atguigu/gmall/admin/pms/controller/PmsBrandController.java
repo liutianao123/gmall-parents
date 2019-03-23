@@ -1,7 +1,7 @@
 package com.atguigu.gmall.admin.pms.controller;
 
 import com.alibaba.dubbo.config.annotation.Reference;
-import com.atguigu.gmall.admin.pms.vo.PmsBrandParam;
+import com.atguigu.gmall.admin.pms.controller.vo.PmsBrandParam;
 import com.atguigu.gmall.pms.entity.Brand;
 import com.atguigu.gmall.pms.service.BrandService;
 import com.atguigu.gmall.to.CommonResult;

@@ -1,13 +1,9 @@
-package com.atguigu.gmall.admin.pms.vo;
+package com.atguigu.gmall.admin.pms.controller.vo;
 
 import com.atguigu.gmall.admin.validator.FlagValidator;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
-import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotEmpty;
-import org.hibernate.validator.constraints.URL;
-
-import javax.validation.constraints.Email;
 
 /**
  * 商品属性参数

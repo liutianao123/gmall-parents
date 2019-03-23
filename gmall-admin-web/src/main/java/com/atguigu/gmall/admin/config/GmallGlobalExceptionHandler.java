@@ -20,8 +20,8 @@ public class GmallGlobalExceptionHandler {
         log.error("数字异常");
         return new CommonResult().failed().validateFailed(e.getMessage());
     }
-    @ExceptionHandler(Exception.class)
-    public Object exception(Exception e){
-        return new CommonResult().failed().validateFailed("cw");
-    }
+//    @ExceptionHandler(Exception.class)
+//    public Object exception(Exception e){
+//        return new CommonResult().failed().validateFailed(e.getMessage());
+//    }
 }

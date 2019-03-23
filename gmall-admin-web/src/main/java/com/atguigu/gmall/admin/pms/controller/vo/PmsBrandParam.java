@@ -1,4 +1,4 @@
-package com.atguigu.gmall.admin.pms.vo;
+package com.atguigu.gmall.admin.pms.controller.vo;
 
 import com.atguigu.gmall.admin.validator.FlagValidator;
 import io.swagger.annotations.ApiModelProperty;

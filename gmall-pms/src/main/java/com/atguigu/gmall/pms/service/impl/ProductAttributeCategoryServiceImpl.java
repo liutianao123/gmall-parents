@@ -6,11 +6,14 @@ import com.atguigu.gmall.pms.entity.ProductAttribute;
 import com.atguigu.gmall.pms.entity.ProductAttributeCategory;
 import com.atguigu.gmall.pms.mapper.ProductAttributeCategoryMapper;
 import com.atguigu.gmall.pms.service.ProductAttributeCategoryService;
+import com.atguigu.gmall.pms.vo.PmsProductAttributeCategoryItem;
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -31,5 +34,12 @@ public class ProductAttributeCategoryServiceImpl extends ServiceImpl<ProductAttr
         IPage<ProductAttributeCategory> page = baseMapper.selectPage(pages, null);
         Map<String, Object> map = PageBaseConfig.pageBase(page);
         return map;
+    }
+
+    @Override
+    public List<PmsProductAttributeCategoryItem> selectAll() {
+        List<PmsProductAttributeCategoryItem> list = baseMapper.selectAll();
+        System.out.println(list);
+        return list;
     }
 }

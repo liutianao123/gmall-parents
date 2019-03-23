@@ -2,11 +2,13 @@ package com.atguigu.gmall.admin.pms.controller;
 
 import com.alibaba.dubbo.config.annotation.Reference;
 import com.atguigu.gmall.pms.service.ProductAttributeCategoryService;
+import com.atguigu.gmall.pms.vo.PmsProductAttributeCategoryItem;
 import com.atguigu.gmall.to.CommonResult;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Map;
 
 
@@ -65,7 +67,8 @@ public class PmsProductAttributeCategoryController {
     @ResponseBody
     public Object getListWithAttr() {
 
-        //TODO 获取所有商品属性分类及其下属性
-        return new CommonResult().success(null);
+//        // 获取所有商品属性分类及其下属性
+            List<PmsProductAttributeCategoryItem> list=productAttributeCategoryService.selectAll();
+        return new CommonResult().success(list);
     }
 }

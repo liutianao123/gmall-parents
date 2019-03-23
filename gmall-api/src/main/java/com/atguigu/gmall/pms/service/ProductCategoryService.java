@@ -5,6 +5,7 @@ import com.atguigu.gmall.pms.vo.ProductCategoryVo;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * <p>
@@ -17,4 +18,8 @@ import java.util.List;
 public interface ProductCategoryService extends IService<ProductCategory> {
 
     List<ProductCategoryVo> select();
+
+    Map<String,Object> selects(Integer pageNum, Integer pageSize, Long parentId);
+
+    boolean add(ProductCategory  productCategoryParam);
 }

@@ -1,14 +1,12 @@
 package com.atguigu.gmall.admin.pms.controller;
 
 import com.alibaba.dubbo.config.annotation.Reference;
-import com.atguigu.gmall.admin.pms.vo.PmsProductParam;
-import com.atguigu.gmall.admin.pms.vo.PmsProductQueryParam;
 import com.atguigu.gmall.pms.service.ProductService;
+import com.atguigu.gmall.pms.vo.PmsProductParam;
+import com.atguigu.gmall.pms.vo.PmsProductQueryParam;
 import com.atguigu.gmall.to.CommonResult;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
@@ -54,7 +52,7 @@ public class PmsProductController {
                           @RequestParam(value = "pageSize", defaultValue = "5") Integer pageSize,
                           @RequestParam(value = "pageNum", defaultValue = "1") Integer pageNum) {
         //查询商品
-        Map<String,Object> map=productService.pageselect(pageSize,pageNum);
+        Map<String,Object> map=productService.pageselect(productQueryParam,pageSize,pageNum);
         return new CommonResult().success(map);
     }
 

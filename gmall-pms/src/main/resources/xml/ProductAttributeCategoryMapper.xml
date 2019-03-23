@@ -4,15 +4,24 @@
 
     <!-- 通用查询映射结果 -->
     <resultMap id="BaseResultMap" type="com.atguigu.gmall.pms.entity.ProductAttributeCategory">
-        <id column="id" property="id" />
-        <result column="name" property="name" />
-        <result column="attribute_count" property="attributeCount" />
-        <result column="param_count" property="paramCount" />
+        <id column="id" property="id"/>
+        <result column="name" property="name"/>
+        <result column="attribute_count" property="attributeCount"/>
+        <result column="param_count" property="paramCount"/>
     </resultMap>
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
         id, name, attribute_count, param_count
     </sql>
+    <resultMap id="resmap" type="com.atguigu.gmall.pms.vo.PmsProductAttributeCategoryItem" extends="BaseResultMap">
+        <collection property="productAttributeList"  column="id" select="selectps"></collection>
+    </resultMap>
+    <select id="selectAll" resultMap="resmap">
+     SELECT   id, name, attribute_count, param_count FROM pms_product_attribute_category
+    </select>
+    <select id="selectps" resultType="com.atguigu.gmall.pms.entity.ProductAttribute">
+        SELECT   * FROM pms_product_attribute where product_attribute_category_id=#{id}
+    </select>
 
 </mapper>

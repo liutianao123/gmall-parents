@@ -1,4 +1,4 @@
-package com.atguigu.gmall.admin.pms.vo;
+package com.atguigu.gmall.pms.vo;
 
 
 import lombok.Data;

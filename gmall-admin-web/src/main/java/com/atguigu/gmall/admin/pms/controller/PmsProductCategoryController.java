@@ -1,14 +1,14 @@
 package com.atguigu.gmall.admin.pms.controller;
 
 import com.alibaba.dubbo.config.annotation.Reference;
-import com.atguigu.gmall.admin.pms.vo.PmsProductCategoryParam;
+import com.atguigu.gmall.admin.pms.controller.vo.PmsProductCategoryParam;
+import com.atguigu.gmall.pms.entity.ProductCategory;
 import com.atguigu.gmall.pms.service.ProductCategoryService;
 import com.atguigu.gmall.pms.vo.ProductCategoryVo;
 import com.atguigu.gmall.to.CommonResult;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
+import org.springframework.beans.BeanUtils;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -31,8 +31,12 @@ public class PmsProductCategoryController {
     @PostMapping(value = "/create")
     public Object create(@Validated @RequestBody PmsProductCategoryParam productCategoryParam,
                          BindingResult result) {
-        //TODO 添加产品分类
-        return new CommonResult().success(null);
+        //添加产品分类
+        System.out.println(result.getRawFieldValue("name"));
+        ProductCategory productCategory=new ProductCategory();
+        BeanUtils.copyProperties(productCategoryParam,productCategory);
+        boolean b=productCategoryService.add(productCategory);
+        return new CommonResult().success(b?"redirect:/#/pms/productCate":"失败");
     }
 
     @ApiOperation("修改商品分类")
@@ -50,8 +54,9 @@ public class PmsProductCategoryController {
     public Object getList(@PathVariable Long parentId,
                           @RequestParam(value = "pageSize", defaultValue = "5") Integer pageSize,
                           @RequestParam(value = "pageNum", defaultValue = "1") Integer pageNum) {
-        //TODO 分页查询商品分类
-        return new CommonResult().success(null);
+        //分页查询商品分类
+        Map<String,Object> list=productCategoryService.selects(pageNum,pageSize,parentId);
+        return new CommonResult().success(list);
     }
 
     @ApiOperation("根据id获取商品分类")
