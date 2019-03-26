@@ -1,6 +1,7 @@
 package com.atguigu.gmall.admin.pms.controller;
 
 import com.alibaba.dubbo.config.annotation.Reference;
+import com.atguigu.gmall.pms.entity.ProductAttributeCategory;
 import com.atguigu.gmall.pms.service.ProductAttributeCategoryService;
 import com.atguigu.gmall.pms.vo.PmsProductAttributeCategoryItem;
 import com.atguigu.gmall.to.CommonResult;
@@ -28,29 +29,33 @@ public class PmsProductAttributeCategoryController {
     @PostMapping(value = "/create")
     public Object create(@RequestParam String name) {
 
-        //TODO 添加商品属性分类
-        return new CommonResult().success(null);
+        // 添加商品属性分类
+        boolean b=productAttributeCategoryService.savep(name);
+        return new CommonResult().success(b);
     }
 
     @ApiOperation("修改商品属性分类")
     @PostMapping(value = "/update/{id}")
     public Object update(@PathVariable Long id, @RequestParam String name) {
-        //TODO 修改商品属性分类
-        return new CommonResult().success(null);
+        // 修改商品属性分类
+        boolean b=productAttributeCategoryService.updatep(id,name);
+        return new CommonResult().success(b);
     }
 
     @ApiOperation("删除单个商品属性分类")
     @GetMapping(value = "/delete/{id}")
     public Object delete(@PathVariable Long id) {
-        //TODO 删除单个商品属性分类
-        return new CommonResult().success(null);
+        // 删除单个商品属性分类
+       boolean b= productAttributeCategoryService.delect(id);
+        return new CommonResult().success(b);
     }
 
     @ApiOperation("获取单个商品属性分类信息")
     @GetMapping(value = "/{id}")
     public Object getItem(@PathVariable Long id) {
-        //TODO 获取单个商品属性分类信息
-        return new CommonResult().success(null);
+        // 获取单个商品属性分类信息
+        ProductAttributeCategory productAttributeCategory=productAttributeCategoryService.selectById(id);
+        return new CommonResult().success(productAttributeCategory);
     }
 
     @ApiOperation("分页获取所有商品属性分类")

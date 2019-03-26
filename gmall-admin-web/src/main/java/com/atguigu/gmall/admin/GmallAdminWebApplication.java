@@ -3,6 +3,7 @@ package com.atguigu.gmall.admin;
 import com.alibaba.dubbo.config.spring.context.annotation.EnableDubbo;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
 
 
 /**
@@ -17,6 +18,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  *      2）、web都是refrence
  *      3）、注意不要用复杂类的mp自动生成的方法
  */
+
 @EnableDubbo
 @SpringBootApplication
 public class GmallAdminWebApplication {

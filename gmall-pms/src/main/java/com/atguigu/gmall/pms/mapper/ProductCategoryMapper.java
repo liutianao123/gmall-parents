@@ -16,5 +16,5 @@ import java.util.List;
  */
 public interface ProductCategoryMapper extends BaseMapper<ProductCategory> {
 
-    List<ProductCategoryVo> selectLists(int id);
+    List<ProductCategoryVo> selectLists(Long id);
 }

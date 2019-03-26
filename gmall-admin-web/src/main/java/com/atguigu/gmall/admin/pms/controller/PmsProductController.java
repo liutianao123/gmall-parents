@@ -1,6 +1,7 @@
 package com.atguigu.gmall.admin.pms.controller;
 
 import com.alibaba.dubbo.config.annotation.Reference;
+import com.atguigu.gmall.pms.entity.Product;
 import com.atguigu.gmall.pms.service.ProductService;
 import com.atguigu.gmall.pms.vo.PmsProductParam;
 import com.atguigu.gmall.pms.vo.PmsProductQueryParam;
@@ -28,21 +29,24 @@ public class PmsProductController {
     @PostMapping(value = "/create")
     public Object create(@RequestBody PmsProductParam productParam,
                          BindingResult bindingResult) {
-        //TODO 查询所有一级分类及子分类
+        // 查询所有一级分类及子分类
+        productService.Insert(productParam);
         return new CommonResult().success(null);
     }
 
     @ApiOperation("根据商品id获取商品编辑信息")
     @GetMapping(value = "/updateInfo/{id}")
     public Object getUpdateInfo(@PathVariable Long id) {
-        //TODO 根据商品id获取商品编辑信息
-        return new CommonResult().success(null);
+        // 根据商品id获取商品编辑信息
+        Product product=productService.selectById(id);
+        return new CommonResult().success(product);
     }
 
     @ApiOperation("更新商品")
     @PostMapping(value = "/update/{id}")
     public Object update(@PathVariable Long id, @RequestBody PmsProductParam productParam, BindingResult bindingResult) {
-        //TODO 更新商品
+        // 更新商品
+
         return new CommonResult().success(null);
     }
 

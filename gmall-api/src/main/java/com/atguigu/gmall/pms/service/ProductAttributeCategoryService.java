@@ -21,4 +21,11 @@ public interface ProductAttributeCategoryService extends IService<ProductAttribu
 
     List<PmsProductAttributeCategoryItem> selectAll();
 
+    boolean savep(String name);
+
+    boolean updatep(Long id, String name);
+
+    boolean delect(Long id);
+
+    ProductAttributeCategory selectById(Long id);
 }

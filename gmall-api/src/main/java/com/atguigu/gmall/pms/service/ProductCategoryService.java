@@ -22,4 +22,6 @@ public interface ProductCategoryService extends IService<ProductCategory> {
     Map<String,Object> selects(Integer pageNum, Integer pageSize, Long parentId);
 
     boolean add(ProductCategory  productCategoryParam);
+
+    List<ProductCategoryVo> selectById(Long id);
 }

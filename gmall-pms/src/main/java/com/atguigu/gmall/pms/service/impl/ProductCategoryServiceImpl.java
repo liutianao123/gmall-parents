@@ -44,7 +44,7 @@ public class ProductCategoryServiceImpl extends ServiceImpl<ProductCategoryMappe
             List<ProductCategoryVo> list = JSON.parseArray(catchs, ProductCategoryVo.class);
             return list;
         }
-        List<ProductCategoryVo> list = baseMapper.selectLists(0);
+        List<ProductCategoryVo> list = baseMapper.selectLists(0l);
         String s = JSON.toJSONString(list);
         operations.set(RediesConfig.REDIES_ELEMENT,s,3, TimeUnit.DAYS);
         return list;
@@ -65,5 +65,12 @@ public class ProductCategoryServiceImpl extends ServiceImpl<ProductCategoryMappe
 
         int insert =baseMapper.insert(productCategoryParam);
         return insert>0;
+    }
+
+    @Override
+    public List<ProductCategoryVo> selectById(Long id) {
+        List<ProductCategoryVo> list = baseMapper.selectLists(id);
+
+        return list;
     }
 }

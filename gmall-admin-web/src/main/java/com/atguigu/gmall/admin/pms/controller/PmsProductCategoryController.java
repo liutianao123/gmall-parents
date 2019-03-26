@@ -1,7 +1,8 @@
 package com.atguigu.gmall.admin.pms.controller;
 
 import com.alibaba.dubbo.config.annotation.Reference;
-import com.atguigu.gmall.admin.pms.controller.vo.PmsProductCategoryParam;
+import com.atguigu.gmall.admin.pms.vo.PmsProductCategoryParam;
+import com.atguigu.gmall.pms.entity.Product;
 import com.atguigu.gmall.pms.entity.ProductCategory;
 import com.atguigu.gmall.pms.service.ProductCategoryService;
 import com.atguigu.gmall.pms.vo.ProductCategoryVo;
@@ -62,8 +63,9 @@ public class PmsProductCategoryController {
     @ApiOperation("根据id获取商品分类")
     @GetMapping(value = "/{id}")
     public Object getItem(@PathVariable Long id) {
-        //TODO 根据id获取商品分类
-        return new CommonResult().success(null);
+        // 根据id获取商品分类
+        List<ProductCategoryVo> list=productCategoryService.selectById(id);
+        return new CommonResult().success(list);
     }
 
     @ApiOperation("删除商品分类")
