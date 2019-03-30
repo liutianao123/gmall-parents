@@ -5,6 +5,7 @@ import com.atguigu.gmall.pms.entity.Product;
 import com.atguigu.gmall.pms.service.ProductService;
 import com.atguigu.gmall.pms.vo.PmsProductParam;
 import com.atguigu.gmall.pms.vo.PmsProductQueryParam;
+import com.atguigu.gmall.search.service.SearchService;
 import com.atguigu.gmall.to.CommonResult;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -24,6 +25,8 @@ import java.util.Map;
 public class PmsProductController {
     @Reference
     private ProductService productService;
+    @Reference
+    private SearchService searchService;
 
     @ApiOperation("创建商品")
     @PostMapping(value = "/create")
@@ -81,6 +84,8 @@ public class PmsProductController {
     public Object updatePublishStatus(@RequestParam("ids") List<Long> ids,
                                      @RequestParam("publishStatus") Integer publishStatus) {
         //TODO 批量上下架
+        //searchService.ublishStatus(ids,publishStatus);
+        productService.ublishStatus(ids,publishStatus);
         return new CommonResult().success(null);
     }
 

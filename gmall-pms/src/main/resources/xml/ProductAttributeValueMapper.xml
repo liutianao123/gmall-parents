@@ -4,15 +4,22 @@
 
     <!-- 通用查询映射结果 -->
     <resultMap id="BaseResultMap" type="com.atguigu.gmall.pms.entity.ProductAttributeValue">
-        <id column="id" property="id" />
-        <result column="product_id" property="productId" />
-        <result column="product_attribute_id" property="productAttributeId" />
-        <result column="value" property="value" />
+        <id column="id" property="id"/>
+        <result column="product_id" property="productId"/>
+        <result column="product_attribute_id" property="productAttributeId"/>
+        <result column="value" property="value"/>
     </resultMap>
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
         id, product_id, product_attribute_id, value
     </sql>
-
+    <!--List<EsProductAttributeValue> selectProductAttrvalues(Long id);-->
+    <select id="selectProductAttrvalues" resultType="com.atguigu.gmall.to.EsProductAttributeValue">
+        SELECT pa.`name`,pa.`type`,pav.`id`,pav.`product_id`,pav.`value`,pav.`product_attribute_id`
+        FROM pms_product_attribute pa LEFT JOIN
+        pms_product_attribute_value pav
+        ON pav.`product_attribute_id`=pa.`id` WHERE
+        pav.`product_id`=#{id}
+    </select>
 </mapper>

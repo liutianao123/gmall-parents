@@ -7,6 +7,7 @@ import com.atguigu.gmall.pms.vo.PmsProductQueryParam;
 import com.baomidou.mybatisplus.extension.service.IService;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -26,4 +27,9 @@ public interface ProductService extends IService<Product> {
     Product selectById(Long id);
 
     void Insert(PmsProductParam productParam);
+    void updateByIds(List<Long> ids, Integer publishStatus);
+
+    List<Product> selectByIds(List<Long> list);
+
+    void ublishStatus(List<Long> ids, Integer publishStatus);
 }

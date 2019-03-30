@@ -3,6 +3,8 @@ package com.atguigu.gmall.pms.mapper;
 import com.atguigu.gmall.pms.entity.SkuStock;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
+import java.util.List;
+
 /**
  * <p>
  * sku的库存 Mapper 接口
