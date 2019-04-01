@@ -48,7 +48,9 @@ public class SearchServiceImpl implements SearchService {
     @Override
     public boolean saveProductInfoToEs(EsProduct esProduct) {
         Index index = new Index.Builder(esProduct)
-                .index(EsConstant.ES_PRODUCT_INDEX).type(EsConstant.ES_PRODUCT_TYPE).id(esProduct.getId().toString()).build();
+                .index(EsConstant.ES_PRODUCT_INDEX)
+                .type(EsConstant.ES_PRODUCT_TYPE)
+                .id(esProduct.getId().toString()).build();
         DocumentResult execute = null;
         try {
             execute = jestClient.execute(index);
